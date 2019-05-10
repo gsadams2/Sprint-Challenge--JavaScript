@@ -7,8 +7,16 @@
  * In the body of the function return the callback with the two parameters that you created
  */
 
-function consume(x, y, cb) {
-  // return cb(x + y);
+function consumeAdd(x, y, cb) {
+  return cb(x + y);
+}
+
+function consumeMultiply(x, y, cb) {
+  return cb(x * y);
+}
+
+function consumeGreeting(x, y, cb) {
+  return cb("Hello " + `${x}` + " " + `${y}` + ", nice to meet you!");
 }
 
 /* Step 2: Create several functions to callback with consume();
@@ -17,44 +25,40 @@ function consume(x, y, cb) {
  * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
  */
 
-function consume(x, y, add) {
-  return add(x + y);
-}
-
-consume(60, 60, function(add) {
+consumeAdd(2, 2, function(add) {
   console.log(add);
 });
 
-// consume(50, 50, function(add) {
-//   console.log(add);
-// });
-
-function consume(x, y, cb) {
-  return cb(x * y);
-}
-
-consume(50, 50, function(multiply) {
+consumeMultiply(10, 16, function(multiply) {
   console.log(multiply);
 });
 
-function consume(x, y, cb) {
-  return cb("Hello " + `${x}` + " " + `${y}` + ", nice to meet you!");
-}
-
-// consume("George", "Adams", function(greeting) {
-//   console.log(greeting);
-// });
+consumeGreeting("Mary", "Poppins", function(greeting) {
+  console.log(greeting);
+});
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-consume(2, 2, add); // 4
-consume(10, 16, multiply); // 160
-consume("Mary", "Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+// consume(2, 2, add); // 4
+// consume(10, 16, multiply); // 160
+// consume("Mary", "Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+
+consumeAdd(2, 2, function(add) {
+  console.log(add);
+});
+
+consumeMultiply(10, 16, function(multiply) {
+  console.log(multiply);
+});
+
+consumeGreeting("Mary", "Poppins", function(greeting) {
+  console.log(greeting);
+});
 
 // ==== Closures ====
 
 // Explain in your own words why `nestedfunction()` can access the variable `internal`.
 
-// Explanation: It can access internal because its in the local execution context.
+// Explanation: It can access internal because in closures, an inner function has access to the outer function’s variables
 
 const external = "I'm outside the function";
 
